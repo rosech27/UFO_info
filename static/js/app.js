@@ -6,7 +6,8 @@ var tableData = data;
 
 var tbody = d3.select("tbody");
 
-tableData.forEach(UFOdata => {    
+function loadData(rc){
+rc.forEach(UFOdata => {    
     var row = tbody.append("tr");
     Object.entries(UFOdata).forEach(function([key, value]) {
       //console.log(key, value);
@@ -14,6 +15,7 @@ tableData.forEach(UFOdata => {
       cell.text(value);
     });
   });
+};
 
 
 var filter = d3.select("#filter-btn");
@@ -34,15 +36,17 @@ filter.on("click", function() {
   var inputValue = inputElement.property("value");
   
   var filData = tableData.filter(sighting => sighting.datetime === inputValue);
+
+  loadData(filData);
     
-  filData.forEach(UFOdata => {    
-    var row = tbody.append("tr");
-    Object.entries(UFOdata).forEach(function([key, value]) {
-      //console.log(key, value);
-      var cell = tbody.append("td");
-      cell.text(value);
-    });
-  });
+//   filData.forEach(UFOdata => {    
+//     var row = tbody.append("tr");
+//     Object.entries(UFOdata).forEach(function([key, value]) {
+//       //console.log(key, value);
+//       var cell = tbody.append("td");
+//       cell.text(value);
+//     });
+//   });
 });
 
 
