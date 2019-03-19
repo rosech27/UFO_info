@@ -31,11 +31,14 @@ filter.on("click", function() {
 
   // Select the input element and get the raw HTML node
   var inputElement = d3.select("#datetime");
+ // var cityInput = d3.select("#city");
 
   // Get the value property of the input element
   var inputValue = inputElement.property("value");
+ // var cityVal = cityInput.property("value");
   
   var filData = tableData.filter(sighting => sighting.datetime === inputValue);
+    //&& sighting.city === cityVal);
 
   loadData(filData);
     
